@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for author in authors %}
+        <!-- paspaudus sita linka, as bunu nudirectintas i kita page kuris yra definintas "author" funkcijoje-->
+        <!-- Tuo pat metu as paduotu single_author reikesme i ta funkcija, nes ji jos laukia, kad zinotu kur mane redirect -->
+        <!-- as kviesiu author funkcija ir paduosiu single_author reiksme -->
+        <h1><a href="{{ url_for('author', single_author=author['autorius']) }}">{{author['autorius']}}</a></h1>
+        <hr/>
+    {% endfor %}
+{% endblock %}

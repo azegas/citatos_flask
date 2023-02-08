@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for quote in quote %}
+{% if quote['pavadinimas'] == title %}
+<h1>{{ quote['pavadinimas'] }}</h1>
+<p>{{ quote['data'] }}, <i>{{ quote['autorius'] }}</i></p>
+<hr>
+<p>{{ quote['tekstas'] }}</p>
+<br><br>
+{% endif %}
+{% endfor %}
+
+{% endblock %}

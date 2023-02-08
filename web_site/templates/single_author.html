@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Autorius - {{autoriaus_vardas}}</h1>
+
+    {% for info_piece in autoriaus_info %}
+        {% if info_piece['autorius'] == autoriaus_vardas %}
+            <p>Hobis - {{ info_piece['hobis'] }}</p>
+            <br><br>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Jo quotes:</h2>
+
+    {% for quote in quotes %}
+        {% if quote['autorius'] == autoriaus_vardas %}
+            <p>{{ quote['data']}}</p>
+            <p>{{ quote['tekstas']}}</p>
+            <br><br>
+        {% endif %}
+    {% endfor %}
+
+
+
+
+{% endblock %}

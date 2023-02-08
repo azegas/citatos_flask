@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for quote in quotes %}
+        <h1><a href="{{ url_for('quote', quote_title=quote['pavadinimas']) }}">{{quote['pavadinimas']}}</a></h1>
+        <p>{{quote['data']}}, <i><a href="{{ url_for('author', single_author=quote['autorius']) }}">{{quote['autorius']}}</a></i></p>
+        <p>{{ quote['tekstas']}}</p>
+        <hr/>
+    {% endfor %}
+{% endblock %}

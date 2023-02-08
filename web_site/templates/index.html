@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="welcome">
+        <h1>Welcome to the main page!!!</h1>
+        <p>See all <a href={{ url_for('all_quotes') }}>quotes</a></p>
+        <p>See all <a href={{ url_for('all_authors') }}>authors</a></p>
+    </div>
+{% endblock %}

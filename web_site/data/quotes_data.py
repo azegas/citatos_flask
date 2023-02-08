@@ -1,0 +1,51 @@
+quotes_data = [
+    {
+        "data": "2020 01 01",
+        "autorius": "Francesko",
+        "pavadinimas": "Apie nieką",
+        "tekstas": "Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris.",
+        "status": "published",
+    },
+    {
+        "data": "2020 02 01",
+        "autorius": "Eduardas",
+        "pavadinimas": "Apie zombius",
+        "tekstas": "Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. ",
+        "status": "unpublished",
+    },
+    {
+        "data": "2020 03 01",
+        "autorius": "Mykolas",
+        "pavadinimas": "Braiiins!",
+        "tekstas": "Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris.",
+        "status": "published",
+    },
+    {
+        "data": "2020 03 01",
+        "autorius": "Bill Burr",
+        "pavadinimas": "Stuff",
+        "tekstas": "Anything worth having in life is just getting through booming",
+        "status": "published",
+    },
+    {
+        "data": "2020 03 01",
+        "autorius": "Nir Eyal",
+        "pavadinimas": "mmh",
+        "tekstas": "Slaves to the urgent at the cost of the important",
+        "status": "published",
+    },
+    {
+        "data": "2020 03 01",
+        "autorius": "Unknown",
+        "pavadinimas": "mmh2",
+        "tekstas": "Beautiful things don't ask for attention",
+        "status": "published",
+    },
+    {
+        "data": "2020 03 01",
+        "autorius": "Ancient Simian",
+        "pavadinimas": "pippop",
+        "tekstas": "What one fool can do, another can.",
+        "status": "published",
+    },
+]
