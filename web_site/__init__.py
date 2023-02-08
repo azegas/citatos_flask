@@ -4,7 +4,19 @@ from flask import Flask, render_template, request, redirect, url_for
 from web_site.data.quotes_data import quotes_data
 from web_site.data.authors import authors
 
+from flask_wtf import FlaskForm
+from wtforms import StringField, TextAreaField, SubmitField
+from wtforms.validators import DataRequired, Length, Email
+
+from web_site.forms import ContactForm
+
+import os
+
 app = Flask(__name__)
+
+# needed for forms
+SECRET_KEY = os.urandom(32)
+app.config["SECRET_KEY"] = SECRET_KEY
 
 
 @app.route("/")
@@ -84,3 +96,11 @@ def add_quote():
         )
         return redirect(url_for("all_quotes"))
     return render_template("add_quote.html")
+
+
+@app.route("/contact_us", methods=["GET", "POST"])
+def contact_us():
+    form = ContactForm()
+    if form.validate_on_submit():
+        return render_template("contact_success.html", form=form)
+    return render_template("contact_us.html", form=form)
