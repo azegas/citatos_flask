@@ -4,5 +4,23 @@
         <h1>Welcome to the main page!!!</h1>
         <p>See all <a href={{ url_for('all_quotes') }}>quotes</a></p>
         <p>See all <a href={{ url_for('all_authors') }}>authors</a></p>
+        <table>
+            <tr>
+                <th>Popular authors</th>
+                <th>Newest authors</th>
+            </tr>
+            {% for author in authors %}
+                <tr>
+                    <td>
+                        <p><i><a href="{{ url_for('author', single_author=author['autorius']) }}">{{author['autorius']}}</a></i></p>
+                    </td>
+                    <td>
+                        {% if author['autorius'] == "Francesko" %}
+                            <p><i><a href="{{ url_for('author', single_author=author['autorius'])}}">{{author['autorius']}}</a></i></p>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}

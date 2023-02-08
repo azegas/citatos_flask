@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     """Render index page."""
-    return render_template("index.html")
+    return render_template("index.html", authors=quotes_data)
 
 
 @app.route("/all_quotes")

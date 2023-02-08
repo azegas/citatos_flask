@@ -5,3 +5,9 @@
   height: 90vh;
   flex-direction: column;
 }
+
+table,
+th,
+td {
+  border: 1px solid;
+}
