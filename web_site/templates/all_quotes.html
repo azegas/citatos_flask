@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
+
+    <p style="margin-top:50px;">Click on the author's name to see more of his quotes.</p>
+    <p style="margin-bottom:50px;">Emoji's indicate {something}.</p>
+
     {% for quote in quotes %}
-        <h1><a href="{{ url_for('quote', quote_title=quote['pavadinimas']) }}">{{quote['pavadinimas']}}</a></h1>
-        <p>{{quote['data']}}, <i><a href="{{ url_for('author', single_author=quote['autorius']) }}">{{quote['autorius']}}</a></i></p>
+        <!-- <h1><a href="{{ url_for('quote', quote_title=quote['pavadinimas']) }}">{{quote['pavadinimas']}}</a></h1> -->
+        <p>
+            Data: {{quote['data']}},
+            Autorius: <i><a href="{{ url_for('author', single_author=quote['autorius']) }}">{{quote['autorius']}}</a></i>,
+            status:
+            {% if quote['balai'] > 1000 %}
+                <i>✅</i>
+            {% else %}
+                <i>❗</i>
+            {% endif %}
+        </p>
         <p>{{ quote['tekstas']}}</p>
         <hr/>
     {% endfor %}

@@ -71,6 +71,7 @@ def add_quote():
         autorius = request.form["autorius"]
         tekstas = request.form["tekstas"]
         pavadinimas = request.form["pavadinimas"]
+        balai = request.form["balai"]
         quotes_data.append(
             {
                 "data": date,
@@ -78,6 +79,7 @@ def add_quote():
                 "pavadinimas": pavadinimas,
                 "tekstas": tekstas,
                 "status": "published",
+                "balai": int(balai),
             }
         )
         return redirect(url_for("all_quotes"))
