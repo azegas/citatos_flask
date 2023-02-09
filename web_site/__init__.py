@@ -65,14 +65,7 @@ def route_all_quotes():
 @app.route("/all_quotes/<string:quote_title>")
 # for this function I must serve quote_title from where I am calling it, in this case - from all_quotes.html
 def route_single_quote(quote_title):
-    """
-    Render a single quote upon choosing a single quote.
-
-    quote_title = I get it from all_quotes html page, using it for this function
-    title = name I assign to pavadinimas and serve to function
-    quotes = how I use it in template, how I serve data TO the template
-    data = how it is actually named in the imported file.
-    """
+    """Render a single quote upon choosing a single quote."""
     return render_template(
         "single_quote.html", quote_title=quote_title, quotes_data=quotes_data
     )
@@ -92,14 +85,7 @@ def route_all_authors():
 
 @app.route("/all_authors/<string:single_author>")
 def route_single_author(single_author):
-    """
-    Render a single author page using two data sources.
-
-    single_author = is what I receive from all_authors
-    authors = database name that I imported
-    autoriaus_vardas = my assigned value to the single_author
-    autoriaus_info = my assigned value to the database of authors.py, must be used in
-    """
+    """Render a single author page using two data sources."""
     return render_template(
         "single_author.html",
         single_author=single_author,
