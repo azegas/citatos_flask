@@ -12,6 +12,7 @@ app = Flask(__name__)
 
 
 def filter_only_authors():
+    """Filter authors."""
     filtered_authors = set()  # Karina
     for author in quotes_data:
         filtered_authors.add(author["autorius"])
@@ -59,7 +60,8 @@ def route_all_quotes():
 
 # quote_title taken from all_quotes.html is being used in the url
 @app.route("/all_quotes/<string:quote_title>")
-# for this function I must serve quote_title from where I am calling it, in this case - from all_quotes.html
+# for this function I must serve quote_title from where I am calling
+# it, in this case - from all_quotes.html
 def route_single_quote(quote_title):
     """Render a single quote upon choosing a single quote."""
     return render_template(
