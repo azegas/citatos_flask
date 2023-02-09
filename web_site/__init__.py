@@ -130,11 +130,3 @@ def route_add_quote():
         )
         return redirect(url_for("all_quotes"))
     return render_template("add_quote.html")
-
-
-@app.route("/contact_us", methods=["GET", "POST"])
-def contact_us():
-    form = ContactForm()
-    if form.validate_on_submit():
-        return render_template("contact_success.html", form=form)
-    return render_template("contact_us.html", form=form)
