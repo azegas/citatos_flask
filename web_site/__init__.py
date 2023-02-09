@@ -3,7 +3,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from web_site.data.quotes_data import quotes_data
 from web_site.data.authors_data import authors_data
-from web_site.forms import ContactForm
 import random
 import os
 
