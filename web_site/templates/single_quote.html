@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for quote in quote %}
+{% for quote in quotes_data %}
 {% if quote['pavadinimas'] == title %}
 <h1>{{ quote['pavadinimas'] }}</h1>
 <p>{{ quote['data'] }}, <i>{{ quote['autorius'] }}</i></p>

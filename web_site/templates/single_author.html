@@ -2,10 +2,10 @@
 
 {% block content %}
 
-    <h1>Autorius - {{autoriaus_vardas}}</h1>
+    <h1>Autorius - {{single_author}}</h1>
 
-    {% for info_piece in autoriaus_info %}
-        {% if info_piece['autorius'] == autoriaus_vardas %}
+    {% for info_piece in authors_data %}
+        {% if info_piece['autorius'] == single_author %}
             <p>Hobis - {{ info_piece['hobis'] }}</p>
             <br><br>
         {% endif %}
@@ -13,8 +13,8 @@
 
     <h2>Jo quotes:</h2>
 
-    {% for quote in quotes %}
-        {% if quote['autorius'] == autoriaus_vardas %}
+    {% for quote in quotes_data %}
+        {% if quote['autorius'] == single_author %}
             <p>{{ quote['data']}}</p>
             <p>{{ quote['tekstas']}}</p>
             <br><br>

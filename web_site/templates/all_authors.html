@@ -1,10 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-    {% for author in authors %}
-        <!-- paspaudus sita linka, as bunu nudirectintas i kita page kuris yra definintas "author" funkcijoje-->
-        <!-- Tuo pat metu as paduotu single_author reikesme i ta funkcija, nes ji jos laukia, kad zinotu kur mane redirect -->
-        <!-- as kviesiu author funkcija ir paduosiu single_author reiksme -->
-        <h1><a href="{{ url_for('author', single_author=author['autorius']) }}">{{author['autorius']}}</a></h1>
-        <hr/>
+    <!-- already a list, not a dictionary, so no need of ['autorius'] -->
+    {% for author in filter_only_authors %}
+        <p><a href="{{ url_for('route_single_author', single_author=author ) }}">{{author}}</a></p>
     {% endfor %}
 {% endblock %}
