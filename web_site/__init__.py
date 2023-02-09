@@ -4,13 +4,9 @@ from flask import Flask, render_template, request, redirect, url_for
 from web_site.data.quotes_data import quotes_data
 from web_site.data.authors_data import authors_data
 import random
-import os
 
 app = Flask(__name__)
 
-# needed for forms
-SECRET_KEY = os.urandom(32)
-app.config["SECRET_KEY"] = SECRET_KEY
 
 # --------------------------------------------------------------------
 
