@@ -1,34 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="welcome">
+        <h3>Quote of the day:</h3>
+        <p>“{{random_post.tekstas}}”
 
-        <h1>Welcome to the main page!!!</h1>
+            - <i><a href="{{ url_for('route_single_author', single_author=random_post.autorius ) }}">{{random_post.autorius}}</a></i>
 
-        <p>See all <a href={{ url_for('route_all_quotes') }}>quotes</a></p>
-        <p>See all <a href={{ url_for('route_all_authors') }}>authors</a></p>
-
-        <p>Randomly generated quote:</p>
-        <!-- Note that you should remove the for loop, as the random_post variable contains a single post, not a list of posts. Chatgpt -->
-        <!-- reloads only when detecting a change? -->
-        <p>{{random_post.tekstas}}</p>
-
-        <table>
-            <tr>
-                <th>Popular authors</th>
-                <th>Newest authors</th>
-            </tr>
-            {% for author in filter_only_authors %}
-                <tr>
-                    <td>
-                        <p><a href="{{ url_for('route_single_author', single_author=author ) }}">{{author}}</a></p>
-                    </td>
-                    <td>
-                        {% if author == "Francesko" %}
-                            <p><i><a href="{{ url_for('route_single_author', single_author=author)}}">{{author}}</a></i></p>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
+        </i></p>
+        <div class="d-flex tiny">
+            <p><a href={{ url_for('route_all_quotes') }}>All quotes</a></p>
+            <p><a href={{ url_for('route_all_authors') }}>All authors</a></p>
+        </div>
     </div>
 {% endblock %}

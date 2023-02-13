@@ -11,3 +11,11 @@ th,
 td {
   border: 1px solid;
 }
+
+.d-flex {
+  gap: 20px;
+}
+
+.tiny {
+  font-size: 14px;
+}
