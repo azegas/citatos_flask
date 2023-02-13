@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <!-- already a list, not a dictionary, so no need of ['autorius'] -->
-    {% for author in filter_only_authors %}
-        <p><a href="{{ url_for('route_single_author', single_author=author ) }}">{{author}}</a></p>
-    {% endfor %}
+    <h2 class="margin50">All authors</h2>
+    <div class="row">
+        <div class="margin50 col-lg-8">
+            <!-- already a list, not a dictionary, so no need of ['autorius'] -->
+            {% for author in filter_only_authors %}
+                <p><a href="{{ url_for('route_single_author', single_author=author ) }}">{{author}}</a></p>
+            {% endfor %}
+        </div>
+            {% include "sidebar.html" %}
+        </div>
 {% endblock %}

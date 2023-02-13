@@ -19,3 +19,37 @@ td {
 .tiny {
   font-size: 14px;
 }
+
+.quoteText {
+  font-family: "Merriweather", "Georgia", serif;
+  font-size: 16px;
+  padding: 0px 5px 10px 0px;
+  line-height: 21px;
+}
+
+.quoteMetadata {
+  font-size: 12px;
+}
+
+.margin50 {
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.footer {
+  margin-top: 50px;
+  padding: 20px;
+  border-top: 1px solid lightgray;
+  text-align: center;
+}
+
+.sidebar {
+  /* background-color: orange; */
+  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  /* height: 100vh; */
+}

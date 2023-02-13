@@ -1,22 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <p style="margin-top:50px;">Click on the author's name to see more of his quotes.</p>
-    <p style="margin-bottom:50px;">Emoji's indicate {something}.</p>
-
-    {% for quote in quotes_data %}
-        <!-- <h1><a href="{{ url_for('route_single_quote', quote_title=quote['pavadinimas']) }}">{{quote['pavadinimas']}}</a></h1> -->
-        <p>
-            Data: {{quote['data']}},
-            Autorius: <i><a href="{{ url_for('route_single_author', single_author=quote['autorius']) }}">{{quote['autorius']}}</a></i>,
-            status:
-            {% if quote['balai'] > 1000 %}
-                <i>✅</i>
-            {% else %}
-                <i>❗</i>
-            {% endif %}
-        </p>
-        <p>{{ quote['tekstas']}}</p>
-        <hr/>
-    {% endfor %}
+    <h2 class="margin50">All quotes</h2>
+    <div class="row">
+        <div class="margin50 col-lg-8">
+        {% for quote in quotes_data %}
+            <p class="quoteText">“{{ quote['tekstas']}}”</p>
+            <p class="quoteMetadata">- <i><a href="{{ url_for('route_single_author', single_author=quote['autorius']) }}">{{quote['autorius']}}</a></i></p>
+            <!-- <h1><a href="{{ url_for('route_single_quote', quote_title=quote['pavadinimas']) }}">{{quote['pavadinimas']}}</a></h1> -->
+            <p class="quoteMetadata">
+                Patalpinta:
+                Data: {{quote['data']}},
+                status:
+                {% if quote['balai'] > 1000 %}
+                    <i>✅</i>
+                {% else %}
+                    <i>❗</i>
+                {% endif %}
+            </p>
+            <hr/>
+        {% endfor %}
+        </div>
+        {% include "sidebar.html" %}
+    </div>
 {% endblock %}

@@ -2,7 +2,7 @@
 {% block content %}
     <div class="welcome">
         <h3>Quote of the day:</h3>
-        <p>“{{random_post.tekstas}}”
+        <p class="quoteText">“{{random_post.tekstas}}”
 
             - <i><a href="{{ url_for('route_single_author', single_author=random_post.autorius ) }}">{{random_post.autorius}}</a></i>
 
