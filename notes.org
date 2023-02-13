@@ -1,0 +1,6 @@
+* database instead of .py file
+- [ ] authors
+- [ ] books
+- [ ] quotes
+
+  proper db su dbeaver ir graphs ir connections
