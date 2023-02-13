@@ -11,4 +11,8 @@ authors_data = [
         "autorius": "Mykolas",
         "hobis": "Kisielius",
     },
+    {
+        "autorius": "Bill Burr",
+        "hobis": "Vedzioti sunis",
+    },
 ]
