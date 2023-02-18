@@ -3,10 +3,33 @@
 from flask import Flask, render_template, request, redirect, url_for
 from web_site.data.quotes_data import quotes_data
 from web_site.data.authors_data import authors_data
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 import random
+import os
 
-app = Flask(__name__)
 
+# kai duombaze pradeda pilnai veikti, tik tuomet startinam appsa
+
+db = SQLAlchemy()
+migrate = Migrate()
+
+from web_site.models import Message
+
+
+def create_app():
+    app = Flask(__name__)  # sukuriame flask instance
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
+        basedir, "db.db"
+    )
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    db.init_app(app)  # kuriame appse bus db inicializuota
+    migrate.init_app(app, db)
+    return app
+
+
+app = create_app()
 
 # --------------------------------------------------------------------
 
