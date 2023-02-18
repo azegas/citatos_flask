@@ -111,5 +111,5 @@ def route_add_quote():
                 "balai": int(balai),
             }
         )
-        return redirect(url_for("all_quotes"))
+        return redirect(url_for("route_all_quotes"))
     return render_template("add_quote.html")
