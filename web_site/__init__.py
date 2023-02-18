@@ -14,6 +14,7 @@ import os
 db = SQLAlchemy()
 migrate = Migrate()
 
+# kad nebutu circular imports
 from web_site.models import Message
 
 
