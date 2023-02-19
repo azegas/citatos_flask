@@ -15,7 +15,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 # kad nebutu circular imports
-from web_site.models import Message
+from web_site.models import Quote, Author
 
 
 def create_app():
