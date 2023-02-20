@@ -2,10 +2,7 @@
 {% block content %}
     <div class="welcome">
         <h3>Quote of the day:</h3>
-        <p class="quoteText">“{{random_post.tekstas}}”
-
-            - <i><a href="{{ url_for('route_single_author', single_author=random_post.autorius ) }}">{{random_post.autorius}}</a></i>
-
+        <p>this is a quote of today</p>
         </i></p>
         <div class="d-flex tiny">
             <p><a href={{ url_for('route_all_quotes') }}>All quotes</a></p>
