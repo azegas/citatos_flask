@@ -24,6 +24,9 @@ class Quote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(200), nullable=False)
     status = db.Column(db.String(50), nullable=False)
+    date_created = db.Column(db.Integer, nullable=False)
+    score = db.Column(db.Integer, nullable=False)
+
     # tag
     # location (vipassana, myanmar, other place)
 
