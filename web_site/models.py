@@ -1,6 +1,7 @@
 """Defining tables of the database."""
 
 from web_site import db
+from datetime import datetime
 
 
 class Author(db.Model):
@@ -12,7 +13,7 @@ class Author(db.Model):
     lastname = db.Column(db.Text, nullable=False)
     born = db.Column(db.Integer, nullable=False)
     hobby = db.Column(db.String(80), nullable=False)
-    # picture
+    date_added = db.Column(db.DateTime, default=datetime.utcnow)
 
     quotes = db.relationship("Quote", backref="author", lazy=True)
 
