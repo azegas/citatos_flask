@@ -1,29 +1,31 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-
-<form action="/add_quote", method="post">
-  <div class="form-group">
-    <label for="autorius">Autorius</label>
-    <input type="text" class="form-control" id="autorius" name="autorius">
-  </div>
-  <div class="form-group">
-    <label for="pavadinimas">Pavadinimas</label>
-    <input type="text" class="form-control" id="pavadinimas" name="pavadinimas">
-  </div>
-  <div class="form-group">
-    <label for="date">Data</label>
-    <input type="text" class="form-control" id="date" name="date">
-  </div>
-  <div class="form-group">
-    <label for="tekstas">Quote</label>
-    <textarea class="form-control" id="tekstas" name="tekstas" rows="3"></textarea>
-  </div>
-    <div class="form-group">
-        <label for="balai">Balai</label>
-        <input type="number" class="form-control" id="balai" name="balai">
-    </div>
-    <button type="submit" class="btn btn-primary">Išsaugoti</button>
-</form>
-
+    <h1>Add a new quote</h1>
+    <form method="POST">
+        <label>Author:</label>
+        <select name="author_id" required>
+            {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.name }} {{ author.lastname }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label>Text:</label>
+        <input type="text" name="text" required>
+        <br>
+        <label>Status:</label>
+        <label for="status">Status:</label>
+        <select name="status">
+            <option value="published">Published</option>
+            <option value="unpublished" selected>Unpublished</option>
+        </select>
+        <br>
+        <label>Date created:</label>
+        <input type="date" name="date_created" required>
+        <br>
+        <label>Score:</label>
+        <input type="text" name="score" required>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
 {% endblock %}

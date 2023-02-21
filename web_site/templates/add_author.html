@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Add a new author</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <br>
+        <label>Lastname:</label>
+        <input type="text" name="lastname" required>
+        <br>
+        <label>Born:</label>
+        <input type="text" name="born" required>
+        <br>
+        <label>Hobby:</label>
+        <input type="text" name="hobby" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

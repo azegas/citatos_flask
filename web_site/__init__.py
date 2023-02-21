@@ -61,26 +61,47 @@ def route_all_authors():
         "all_authors.html",
         quotes_data=quotes_data,
     )
+# --------------------------------------------------------------------
+
+
+@app.route("/add_author", methods=["GET", "POST"])
+def route_add_author():
+    """Add a new author to the database."""
+    if request.method == "POST":
+        name = request.form["name"]
+        lastname = request.form["lastname"]
+        born = request.form["born"]
+        hobby = request.form["hobby"]
+        author = Author(
+            name=name,
+            lastname=lastname,
+            born=born,
+            hobby=hobby,
+        )
+        db.session.add(author)
+        db.session.commit()
+        return redirect(url_for("route_all_authors"))
+    return render_template("add_author.html")
 
 
 @app.route("/add_quote", methods=["GET", "POST"])
 def route_add_quote():
-    """Paaiskinimas."""
+    """Add a new quote to the database."""
     if request.method == "POST":
-        date = request.form["date"]
-        autorius = request.form["autorius"]
-        tekstas = request.form["tekstas"]
-        pavadinimas = request.form["pavadinimas"]
-        balai = request.form["balai"]
-        quotes_data.append(
-            {
-                "data": date,
-                "autorius": autorius,
-                "pavadinimas": pavadinimas,
-                "tekstas": tekstas,
-                "status": "published",
-                "balai": int(balai),
-            }
+        text = request.form["text"]
+        status = request.form["status"]
+        date_created = request.form["date_created"]
+        score = request.form["score"]
+        author_id = request.form["author_id"]
+        quote = Quote(
+            text=text,
+            status=status,
+            date_created=date_created,
+            score=score,
+            author_id=author_id,
         )
+        db.session.add(quote)
+        db.session.commit()
         return redirect(url_for("route_all_quotes"))
-    return render_template("add_quote.html")
+    authors = Author.query.all()
+    return render_template("add_quote.html", authors=authors)
