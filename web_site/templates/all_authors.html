@@ -16,8 +16,9 @@
     <div class="row">
         <div class="margin50 col-lg-8">
             {% for author in authors %}
+                <img alt="" src="{{url_for('static', filename='images/' + author.pic)}}" width="200px"/>
                 <li><a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }} {{author.lastname}}</a></li>
-                <p>{{author.pic}}</p>
+                <!-- <p>{{author.pic}}</p> -->
             {% endfor %}
         </div>
         {% include "sidebar.html" %}
