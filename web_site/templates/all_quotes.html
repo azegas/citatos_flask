@@ -4,20 +4,20 @@
     <div class="row">
         <div class="margin50 col-lg-8">
             {% for quote in quotes_data %}
-            <p>{{quote.id}}</p>
-            <p class="quoteText">“{{quote.text}}”</p>
-            <p class="quoteMetadata">
-                Patalpinta:
-                Data: {{quote.date_created}},
-                status:
-                {% if quote.score > 1000 %}
-                    <i>✅</i>
-                {% else %}
-                    <i>❗</i>
-                {% endif %}
-            </p>
-            <hr/>
-        {% endfor %}
+                <p>{{quote.id}}</p>
+                <p class="quoteText">“{{quote.text}}”</p>
+                <p class="quoteMetadata">
+                    Patalpinta:
+                    Data: {{quote.date_created}},
+                    status:
+                    {% if quote.score > 1000 %}
+                        <i>✅</i>
+                    {% else %}
+                        <i>❗</i>
+                    {% endif %}
+                </p>
+                <hr/>
+            {% endfor %}
         </div>
         {% include "sidebar.html" %}
     </div>

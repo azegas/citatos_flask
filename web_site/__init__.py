@@ -57,6 +57,7 @@ app.config["SECRET_KEY"] = SECRET_KEY
 # print(SECRET_KEY)
 
 # --------------------------------------------------------------------
+# CREATING ROUTES
 
 
 @app.route("/add_author", methods=["GET", "POST"])
@@ -109,7 +110,6 @@ def route_add_quote():
 
 
 # --------------------------------------------------------------------
-# CREATING ROUTES
 
 
 @app.route("/")
