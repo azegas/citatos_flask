@@ -132,3 +132,21 @@ def route_add_quote():
         return redirect(url_for("route_all_quotes"))
     authors = Author.query.all()
     return render_template("add_quote.html", authors=authors)
+
+
+# --------------------------------------------------------------------
+# Creating custom error pages
+# https://www.presslabs.com/how-to/error-pages/#what-are-error-pages
+
+
+# Invalid URL
+# if I don't pass the error code at the end, terminal shows 200
+@app.errorhandler(404)
+def page_not_found(e):
+    return (render_template("errors/404.html"), 404)
+
+
+# Internal server error
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template("errors/500.html"), 500
