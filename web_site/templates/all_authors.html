@@ -3,8 +3,8 @@
     <h2 class="margin50">All authors</h2>
     <div class="row">
         <div class="margin50 col-lg-8">
-            {% for entry in quotes_data %}
-                {{entry.author.name}}
+            {% for author in authors %}
+                <li><a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }}</a></li>
             {% endfor %}
         </div>
             {% include "sidebar.html" %}

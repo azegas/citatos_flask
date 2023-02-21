@@ -62,6 +62,17 @@ def route_all_authors():
         "all_authors.html",
         quotes_data=quotes_data,
     )
+@app.route("/all_authors/<string:first_last_name>/quotes")
+def route_single_author(first_last_name):
+    """Render a list of quotes by a specific author."""
+    # split the name into first and last parts
+    name, lastname = first_last_name.split("_")
+    # find the author based on first and last name
+    author = Author.query.filter_by(name=name, lastname=lastname).first_or_404()
+    quotes_data = author.quotes
+    return render_template("single_author.html", author=author, quotes_data=quotes_data)
+
+
 # --------------------------------------------------------------------
 
 
