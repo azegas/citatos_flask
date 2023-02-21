@@ -1,6 +1,8 @@
-* database instead of .py file
-- [ ] authors
-- [ ] books
-- [ ] quotes
-
-  proper db su dbeaver ir graphs ir connections
+* stuff to do
+- [X] db model, route, and template for authors
+- [X] db model, route, and template for quotes
+- [X] add forms for adding new authors and quotes and make it work
+- [ ] convert forms to "flask wtf" forms
+- [ ] add images with forms
+- [ ] search field
+- [ ] add secret key zygimantas way
