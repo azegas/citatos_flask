@@ -2,7 +2,12 @@
 - [X] db model, route, and template for authors
 - [X] db model, route, and template for quotes
 - [X] add forms for adding new authors and quotes and make it work
-- [ ] convert forms to "flask wtf" forms
-- [ ] add images with forms
+- [ ] convert BOTH forms to "flask wtf" forms
+- [X] add images with forms
 - [ ] search field
-- [ ] add secret key zygimantas way
+- [X] add secret key zygimantas way
+- [ ] add "trim whitespace" to form name/lastname
+- [ ] close to a quote - author pic
+- [ ] number of quotes to each author in author page
+- [ ] login page for the admin to add quotes, for non logged in user -
+  this option is not possible
