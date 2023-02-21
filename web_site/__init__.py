@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import random
 import os
+from web_site.forms import AddAuthorForm
 
 
 # kai duombaze pradeda pilnai veikti, tik tuomet startinam appsa
@@ -33,6 +34,72 @@ app = create_app()
 
 # --------------------------------------------------------------------
 # Creating routes
+# FORM STUFF
+
+# CSRF token cross site request forgery?
+
+# creates a little secret key on the form that then later syncs behind
+# the scenes with another secret key. CSRF token will use the secret key.
+# this below is Zygimantas way of generating a secret key.
+
+
+SECRET_KEY = os.urandom(32)
+app.config["SECRET_KEY"] = SECRET_KEY
+# print(SECRET_KEY)
+
+# --------------------------------------------------------------------
+
+
+@app.route("/add_author", methods=["GET", "POST"])
+def route_add_author():
+    """Use form to add add a new author to the database."""
+    form = AddAuthorForm()
+    # Validate form
+    if form.validate_on_submit():
+        name = request.form["name"]
+        lastname = request.form["lastname"]
+        born = request.form["born"]
+        hobby = request.form["hobby"]
+        author = Author(
+            name=name,
+            lastname=lastname,
+            born=born,
+            hobby=hobby,
+        )
+        db.session.add(author)
+        db.session.commit()
+        return redirect(url_for("route_all_authors"))
+    return render_template("add_author.html", form=form)
+
+
+# --------------------------------------------------------------------
+
+
+@app.route("/add_quote", methods=["GET", "POST"])
+def route_add_quote():
+    """Add a new quote to the database."""
+    if request.method == "POST":
+        text = request.form["text"]
+        status = request.form["status"]
+        date_created = request.form["date_created"]
+        score = request.form["score"]
+        author_id = request.form["author_id"]
+        quote = Quote(
+            text=text,
+            status=status,
+            date_created=date_created,
+            score=score,
+            author_id=author_id,
+        )
+        db.session.add(quote)
+        db.session.commit()
+        return redirect(url_for("route_all_quotes"))
+    authors = Author.query.all()
+    return render_template("add_quote.html", authors=authors)
+
+
+# --------------------------------------------------------------------
+# CREATING ROUTES
 
 
 @app.route("/")
@@ -86,56 +153,6 @@ def route_single_author(first_last_name):
 
 
 # --------------------------------------------------------------------
-
-
-@app.route("/add_author", methods=["GET", "POST"])
-def route_add_author():
-    """Add a new author to the database."""
-    if request.method == "POST":
-        name = request.form["name"]
-        lastname = request.form["lastname"]
-        born = request.form["born"]
-        hobby = request.form["hobby"]
-        author = Author(
-            name=name,
-            lastname=lastname,
-            born=born,
-            hobby=hobby,
-        )
-        db.session.add(author)
-        db.session.commit()
-        return redirect(url_for("route_all_authors"))
-    return render_template("add_author.html")
-
-
-# --------------------------------------------------------------------
-
-
-@app.route("/add_quote", methods=["GET", "POST"])
-def route_add_quote():
-    """Add a new quote to the database."""
-    if request.method == "POST":
-        text = request.form["text"]
-        status = request.form["status"]
-        date_created = request.form["date_created"]
-        score = request.form["score"]
-        author_id = request.form["author_id"]
-        quote = Quote(
-            text=text,
-            status=status,
-            date_created=date_created,
-            score=score,
-            author_id=author_id,
-        )
-        db.session.add(quote)
-        db.session.commit()
-        return redirect(url_for("route_all_quotes"))
-    authors = Author.query.all()
-    return render_template("add_quote.html", authors=authors)
-
-
-# --------------------------------------------------------------------
-# Creating custom error pages
 # https://www.presslabs.com/how-to/error-pages/#what-are-error-pages
 
 

@@ -1,20 +1,24 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 {% block content %}
-    <h1>Add a new author</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <label>Name:</label>
-        <input type="text" name="name" required>
-        <br>
-        <label>Lastname:</label>
-        <input type="text" name="lastname" required>
-        <br>
-        <label>Born:</label>
-        <input type="text" name="born" required>
-        <br>
-        <label>Hobby:</label>
-        <input type="text" name="hobby" required>
-        <br>
-        <input type="submit" value="Submit">
+
+    <form method="POST">
+        {{form.hidden_tag()}}<!-- getting csrf token -->
+
+        {{form.name.label(class="form-label")}}
+        {{form.name(class="form-control")}}
+
+        {{form.lastname.label(class="form-label")}}
+        {{form.lastname(class="form-control")}}
+
+        {{form.born.label(class="form-label")}}
+        {{form.born(class="form-control")}}
+
+        {{form.hobby.label(class="form-label")}}
+        {{form.hobby(class="form-control", rows="5")}}
+
+        <br/>
+        {{form.submit(class="btn btn-primary")}}
     </form>
+
+
 {% endblock %}
