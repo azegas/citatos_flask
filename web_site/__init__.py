@@ -43,11 +43,12 @@ def route_index():
     if not quotes_data:
         return render_template("no_quotes.html")
 
+    # testffing built in jinja filters
+    # https://jinja.palletsprojects.com/en/3.1.x/templates/#list-of-builtin-filters
+    string = "A <strong>RANDOM</strong> QUOTE:"
+
     random_quote = random.choice(quotes_data)
-    return render_template(
-        "index.html",
-        random_quote=random_quote,
-    )
+    return render_template("index.html", random_quote=random_quote, string=string)
 
 
 # --------------------------------------------------------------------

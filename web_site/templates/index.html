@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="welcome">
-        <h3>Quote of the day:</h3>
         <blockquote class="blockquote text-center">
+            <p>{{string|safe|lower}}</p> <!--safe,capitalize,lower,upper,title,trim,striptags  -->
             <p class="mb-0">{{ random_quote.text }}</p>
             <footer class="blockquote-footer">{{random_quote.author.name}} {{random_quote.author.lastname}} <cite title="Source Title">Tokia ir tokia book</cite></footer>
         </blockquote>
