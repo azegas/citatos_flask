@@ -16,8 +16,16 @@
     <div class="row">
         <div class="margin50 col-lg-9 card-deck">
             {% for author in authors %}
-                <img alt="" src="{{url_for('static', filename='images/' + author.pic)}}" width="200px"/>
-                <li><a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }} {{author.lastname}}</a></li>
+
+                <div class="card">
+                    <a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}"><img class="card-img-top" src="{{url_for('static', filename='images/' + author.pic)}}" alt="Card image cap"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }} {{author.lastname}}</a></h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}" class="btn btn-primary">{{author.name}}'s Quotes</a>
+                    </div>
+                </div>
+
                 <!-- <p>{{author.pic}}</p> -->
             {% endfor %}
         </div>
