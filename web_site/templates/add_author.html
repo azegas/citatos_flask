@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <form method="POST">
+    <!-- enctyoe allows us to upload images -->
+    <form method="POST" enctype="multipart/form-data">
         {{form.hidden_tag()}}<!-- getting csrf token -->
 
         {{form.name.label(class="form-label")}}
@@ -12,6 +13,9 @@
 
         {{form.born.label(class="form-label")}}
         {{form.born(class="form-control")}}
+
+        {{form.pic.label(class="form-label")}}
+        {{form.pic(class="form-control")}}
 
         {{form.hobby.label(class="form-label")}}
         {{form.hobby(class="form-control", rows="5")}}

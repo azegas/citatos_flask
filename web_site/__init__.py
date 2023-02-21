@@ -14,7 +14,8 @@ from flask_migrate import Migrate
 import random
 import os
 from web_site.forms import AddAuthorForm
-
+from werkzeug.utils import secure_filename
+import uuid
 
 # ---------------------------------------------------------------------------------------
 # DB STUFF
@@ -41,6 +42,11 @@ def create_app():
 
 
 app = create_app()
+
+# --------------------------------------------------------------------
+# IMG Stuff
+app.config["UPLOAD_FOLDER"] = "static/images"
+
 
 # --------------------------------------------------------------------
 # FORM STUFF
@@ -70,12 +76,35 @@ def route_add_author():
         lastname = request.form["lastname"]
         born = request.form["born"]
         hobby = request.form["hobby"]
-        author = Author(
-            name=name,
-            lastname=lastname,
-            born=born,
-            hobby=hobby,
+
+        # -----------------------------------------------------------
+        # Images stuff
+        # add uuid "Upload Profile Picture - Flask Fridays #38" in
+        # case multiple users will be adding images and there is a
+        # risk they will use same filenames, like "profile.jpg"
+
+        # fetch FULL IMAGE, memetype, filename, etc from the form
+        pic = request.files["pic"]
+        # Grab image NAME only, making sure it is secure by checking
+        # the filename(SQL injection stuff)
+        pic_filename = secure_filename(pic.filename)
+        # set UUID to the pic_filename
+        pic_name_with_uuid = str(uuid.uuid1()) + "_" + pic_filename
+        # save that IMAGE with uuid prefix to the static/images folder
+        pic.save(
+            os.path.join(
+                os.path.abspath(os.path.dirname(__file__)),
+                app.config["UPLOAD_FOLDER"],
+                pic_name_with_uuid,
+            )
         )
+        # change the FULL IMAGE to a string with uuid to save to db
+        pic = pic_name_with_uuid
+
+        # -----------------------------------------------------------
+
+        author = Author(name=name, lastname=lastname, born=born, hobby=hobby, pic=pic)
+
         flash("Successfully added an author!")
         db.session.add(author)
         db.session.commit()

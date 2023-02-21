@@ -1,6 +1,7 @@
 # possible fields - https://wtforms.readthedocs.io/en/3.0.x/fields/
 # possible validators - https://wtforms.readthedocs.io/en/3.0.x/validators/
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField
 from wtforms import StringField, SubmitField, DateField, TextAreaField
 from wtforms.validators import DataRequired, Length
 
@@ -19,4 +20,5 @@ class AddAuthorForm(FlaskForm):
             Length(max=5, message=("Labai neissiplesk seniuk.")),
         ],
     )
+    pic = FileField("A Pic of an Author")
     submit = SubmitField("submit")

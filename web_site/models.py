@@ -14,6 +14,8 @@ class Author(db.Model):
     born = db.Column(db.Integer, nullable=False)
     hobby = db.Column(db.String(80), nullable=False)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
+    # not saving the image itself to the db, just it's name
+    pic = db.Column(db.String(), nullable=True)
 
     quotes = db.relationship("Quote", backref="author", lazy=True)
 
