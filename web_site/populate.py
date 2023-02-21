@@ -1,4 +1,5 @@
 from web_site import db, app, Author, Quote
+from PIL import Image
 
 # --------------------------------------------------------------------
 # error message
@@ -26,7 +27,14 @@ with app.app_context():
 
 # adding authors
 with app.app_context():
+    with open(
+        "/home/arvydas/Dropbox/src/citatos_flask/web_site/static/images/bill_burr.jpeg",
+        "rb",
+    ) as f:
+        bill_img_data = f.read()
     bill = Author(name="bill", lastname="burr", born=1968, hobby="drums")
+    bill.picture = bill_img_data
+
     nir = Author(name="nir", lastname="eyal", born=1980, hobby="drums")
     silvanus = Author(name="silvanus", lastname="thompson", born=1851, hobby="Maths")
     unknown = Author(name="unknown", lastname="unknown", born=99999, hobby="unknown")
@@ -37,6 +45,13 @@ with app.app_context():
 with app.app_context():
     bill_quote = Quote(
         text="Anything worth having in life is just getting through bombing",
+        status="published",
+        date_created=1999,
+        score=100,
+        author=bill,
+    )
+    bill_quote2 = Quote(
+        text="Tikrai nebloga quote",
         status="published",
         date_created=1999,
         score=100,
@@ -63,5 +78,7 @@ with app.app_context():
         score=111,
         author=silvanus,
     )
-    db.session.add_all([bill_quote, nir_quote, unknown_quote, silvanus_quote])
+    db.session.add_all(
+        [bill_quote, bill_quote2, nir_quote, unknown_quote, silvanus_quote]
+    )
     db.session.commit()
