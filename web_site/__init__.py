@@ -1,6 +1,14 @@
 """All the routes are here."""
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import (
+    Flask,
+    render_template,
+    request,
+    redirect,
+    url_for,
+    flash,
+    get_flashed_messages,
+)
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import random
@@ -67,6 +75,7 @@ def route_add_author():
             born=born,
             hobby=hobby,
         )
+        flash("Successfully added an author!")
         db.session.add(author)
         db.session.commit()
         return redirect(url_for("route_all_authors"))
@@ -135,8 +144,11 @@ def route_all_quotes():
 @app.route("/all_authors")
 def route_all_authors():
     """Render a list of all authors."""
+    # Retrieve flashed message(all in genereal)
+    message = get_flashed_messages()
+    # Retrieve all authors from the database
     authors = Author.query.all()
-    return render_template("all_authors.html", authors=authors)
+    return render_template("all_authors.html", authors=authors, message=message)
 
 
 # --------------------------------------------------------------------
