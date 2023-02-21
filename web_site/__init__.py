@@ -18,7 +18,7 @@ from web_site.models import Quote, Author
 
 # initializing the db and creates the tables
 def create_app():
-    app = Flask(__name__)  # sukuriame flask instance
+    app = Flask(__name__)  # creating a Flask Instance
     basedir = os.path.abspath(os.path.dirname(__file__))
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
         basedir, "db.db"
@@ -32,19 +32,25 @@ def create_app():
 app = create_app()
 
 # --------------------------------------------------------------------
+# Creating routes
 
 
 @app.route("/")
 def route_index():
     """Render index page."""
     quotes_data = Quote.query.all()
+
     if not quotes_data:
         return render_template("no_quotes.html")
+
     random_quote = random.choice(quotes_data)
     return render_template(
         "index.html",
         random_quote=random_quote,
     )
+
+
+# --------------------------------------------------------------------
 
 
 @app.route("/all_quotes")
@@ -54,11 +60,17 @@ def route_all_quotes():
     return render_template("all_quotes.html", quotes_data=quotes_data)
 
 
+# --------------------------------------------------------------------
+
+
 @app.route("/all_authors")
 def route_all_authors():
     """Render a list of all authors."""
     authors = Author.query.all()
     return render_template("all_authors.html", authors=authors)
+
+
+# --------------------------------------------------------------------
 
 
 @app.route("/all_authors/<string:first_last_name>/quotes")
@@ -93,6 +105,9 @@ def route_add_author():
         db.session.commit()
         return redirect(url_for("route_all_authors"))
     return render_template("add_author.html")
+
+
+# --------------------------------------------------------------------
 
 
 @app.route("/add_quote", methods=["GET", "POST"])
