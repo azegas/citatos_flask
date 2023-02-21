@@ -57,11 +57,10 @@ def route_all_quotes():
 @app.route("/all_authors")
 def route_all_authors():
     """Render a list of all authors."""
-    quotes_data = Quote.query.all()
-    return render_template(
-        "all_authors.html",
-        quotes_data=quotes_data,
-    )
+    authors = Author.query.all()
+    return render_template("all_authors.html", authors=authors)
+
+
 @app.route("/all_authors/<string:first_last_name>/quotes")
 def route_single_author(first_last_name):
     """Render a list of quotes by a specific author."""
