@@ -14,7 +14,7 @@
 
     <h2 class="margin50">All authors</h2>
     <div class="row">
-        <div class="margin50 col-lg-8">
+        <div class="margin50 col-lg-9 card-deck">
             {% for author in authors %}
                 <img alt="" src="{{url_for('static', filename='images/' + author.pic)}}" width="200px"/>
                 <li><a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }} {{author.lastname}}</a></li>
