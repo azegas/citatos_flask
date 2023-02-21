@@ -3,7 +3,8 @@
     <h2 class="margin50">All quotes</h2>
     <div class="row">
         <div class="margin50 col-lg-8">
-        {% for quote in quotes_data %}
+            {% for quote in quotes_data %}
+            <p>{{quote.id}}</p>
             <p class="quoteText">“{{quote.text}}”</p>
             <p class="quoteMetadata">
                 Patalpinta:
