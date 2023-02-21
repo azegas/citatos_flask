@@ -16,6 +16,7 @@ migrate = Migrate()
 from web_site.models import Quote, Author
 
 
+# initializing the db and creates the tables
 def create_app():
     app = Flask(__name__)  # sukuriame flask instance
     basedir = os.path.abspath(os.path.dirname(__file__))
