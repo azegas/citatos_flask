@@ -8,6 +8,8 @@ import os
 from web_site.forms import AddAuthorForm
 
 
+# ---------------------------------------------------------------------------------------
+# DB STUFF
 # kai duombaze pradeda pilnai veikti, tik tuomet startinam appsa
 
 db = SQLAlchemy()
@@ -33,7 +35,6 @@ def create_app():
 app = create_app()
 
 # --------------------------------------------------------------------
-# Creating routes
 # FORM STUFF
 
 # CSRF token cross site request forgery?
@@ -153,6 +154,7 @@ def route_single_author(first_last_name):
 
 
 # --------------------------------------------------------------------
+# CREATING CUSTOM ERROR PAGES
 # https://www.presslabs.com/how-to/error-pages/#what-are-error-pages
 
 
