@@ -37,9 +37,12 @@ app = create_app()
 def route_index():
     """Render index page."""
     quotes_data = Quote.query.all()
+    if not quotes_data:
+        return render_template("no_quotes.html")
+    random_quote = random.choice(quotes_data)
     return render_template(
         "index.html",
-        quotes_data=quotes_data,
+        random_quote=random_quote,
     )
 
 
