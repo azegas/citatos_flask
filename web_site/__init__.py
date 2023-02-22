@@ -11,7 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import random
 import os
-from web_site.forms import AddAuthorForm
+from web_site.forms import AddAuthorForm, AddQuoteForm
 from werkzeug.utils import secure_filename
 import uuid
 
@@ -113,25 +113,26 @@ def route_add_author():
 
 @app.route("/add_quote", methods=["GET", "POST"])
 def route_add_quote():
-    """Add a new quote to the database."""
-    if request.method == "POST":
+    """Use form to add add a new author to the database."""
+    form = AddQuoteForm()
+    authors = Author.query.all()
+    choices = [(author.id, f"{author.name} {author.lastname}") for author in authors]
+    form.author_id.choices = choices
+    if form.validate_on_submit():
+        author_id = request.form["author_id"]
         text = request.form["text"]
         status = request.form["status"]
-        date_created = request.form["date_created"]
         score = request.form["score"]
-        author_id = request.form["author_id"]
         quote = Quote(
+            author_id=author_id,
             text=text,
             status=status,
-            date_created=date_created,
             score=score,
-            author_id=author_id,
         )
         db.session.add(quote)
         db.session.commit()
         return redirect(url_for("route_all_quotes"))
-    authors = Author.query.all()
-    return render_template("add_quote.html", authors=authors)
+    return render_template("add_quote.html", form=form)
 
 
 # --------------------------------------------------------------------

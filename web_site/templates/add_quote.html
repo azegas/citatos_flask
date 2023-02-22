@@ -2,30 +2,28 @@
 
 {% block content %}
     <h1>Add a new quote</h1>
-    <form method="POST">
-        <label>Author:</label>
-        <select name="author_id" required>
-            {% for author in authors %}
-                <option value="{{ author.id }}">{{ author.name }} {{ author.lastname }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label>Text:</label>
-        <input type="text" name="text" required>
-        <br>
-        <label>Status:</label>
-        <label for="status">Status:</label>
-        <select name="status">
-            <option value="published">Published</option>
-            <option value="unpublished" selected>Unpublished</option>
-        </select>
-        <br>
-        <label>Date created:</label>
-        <input type="date" name="date_created" required>
-        <br>
-        <label>Score:</label>
-        <input type="text" name="score" required>
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <form method="POST"">
+        {{form.hidden_tag()}}<!-- Include CSRF token for security -->
+
+        <div class="form-group">
+            {{ form.author_id.label(class_="form-label")}} <!-- Use class_ instead of class to avoid conflict with Python keyword -->
+            {{ form.author_id(class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.text.label(class_="form-label") }}
+            {{ form.text(class_="form-control", rows="5") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.status.label }} {{ form.status }}
+        </div>
+
+        <div class="form-group">
+            {{ form.score.label }} {{ form.score }}
+        </div>
+
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
 {% endblock %}
