@@ -14,3 +14,5 @@
 - [ ] tag to each quote, sort by category
 - [ ] upon adding new quote - flash for success
 - [ ] make sure migrations work
+- [ ] start adding authors for real - have some real data and when you
+  need to do smth with db - simply do the migrations
