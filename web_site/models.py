@@ -24,12 +24,9 @@ class Quote(db.Model):
 
     __tablename__ = "quotes"
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(200), nullable=False)
+    text = db.Column(db.String(), nullable=False)
     status = db.Column(db.String(50), nullable=False)
-    date_created = db.Column(db.Integer, nullable=False)
+    date_added = db.Column(db.DateTime, default=datetime.utcnow)
     score = db.Column(db.Integer, nullable=False)
-
-    # tag
-    # location (vipassana, myanmar, other place)
 
     author_id = db.Column(db.Integer, db.ForeignKey("authors.id"), nullable=False)
