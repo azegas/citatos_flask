@@ -1,5 +1,3 @@
-A flask site build to store my all of the quotes that I like.
-
 # Integrated DB
 
 This version of the project is using .db file and flask-sqlalchemy to
