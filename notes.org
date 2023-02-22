@@ -11,3 +11,4 @@
 - [ ] number of quotes to each author in author page
 - [ ] login page for the admin to add quotes, for non logged in user -
   this option is not possible
+- [ ] upon adding new quote - flash for success
