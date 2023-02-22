@@ -25,7 +25,7 @@ class Quote(db.Model):
     __tablename__ = "quotes"
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(), nullable=False)
-    status = db.Column(db.String(50), nullable=False)
+    status = db.Column(db.String(), nullable=False)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
     score = db.Column(db.Integer, nullable=False)
 

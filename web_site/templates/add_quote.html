@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Add a new quote</h1>
+
+    <h2 class="margin50">Add new quote</h2>
+
     <form method="POST"">
         {{form.hidden_tag()}}<!-- Include CSRF token for security -->
 

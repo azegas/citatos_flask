@@ -13,26 +13,28 @@ from wtforms import (
 from wtforms.validators import DataRequired, Length
 
 
-# Creating a form class for author
 class AddAuthorForm(FlaskForm):
-    name = StringField("Author's name", validators=[DataRequired()])
-    lastname = StringField("Author's lastname", validators=[DataRequired()])
+    """Creating a form class for new author."""
+
+    name = StringField("Author's name:", validators=[DataRequired()])
+    lastname = StringField("Author's lastname:", validators=[DataRequired()])
     born = DateField(
         "When the author was born?", format="%Y-%m-%d", validators=[DataRequired()]
     )
-    pic = FileField("A Pic of an Author")
-    submit = SubmitField("submit")
+    pic = FileField("Add a picture of an author:")
+    submit = SubmitField("Submit")
 
 
-# Creating a form class for quote
 class AddQuoteForm(FlaskForm):
-    author_id = SelectField("Author:", validators=[DataRequired()])
+    """Creating a form class for new quote."""
+
+    author_id = SelectField(
+        "Author:",
+        validators=[DataRequired(), Length(max=50)],
+    )
     text = TextAreaField(
-        "Quote text",
-        validators=[
-            DataRequired(),
-            Length(max=50, message=("Labai neissiplesk seniuk.")),
-        ],
+        "Quote text:",
+        validators=[DataRequired(), Length(max=1000)],
     )
     status = SelectField(
         "Status:",
@@ -40,7 +42,7 @@ class AddQuoteForm(FlaskForm):
         default="unpublished",
     )
     score = IntegerField(
-        "Score",
+        "Score:",
         validators=[DataRequired()],
     )
     submit = SubmitField("submit")
