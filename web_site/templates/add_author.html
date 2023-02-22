@@ -3,22 +3,30 @@
 
     <!-- enctyoe allows us to upload images -->
     <form method="POST" enctype="multipart/form-data">
-        {{form.hidden_tag()}}<!-- getting csrf token -->
+        {{form.hidden_tag()}}<!-- Include CSRF token for security -->
 
-        {{form.name.label(class="form-label")}}
-        {{form.name(class="form-control")}}
+        <div class="form-group">
+            {{ form.name.label(class_="form-label") }} <!-- Use class_ instead of class to avoid conflict with Python keyword -->
+            {{ form.name(class_="form-control") }}
+        </div>
 
-        {{form.lastname.label(class="form-label")}}
-        {{form.lastname(class="form-control")}}
+        <div class="form-group">
+            {{ form.lastname.label(class_="form-label") }}
+            {{ form.lastname(class_="form-control") }}
+        </div>
 
-        {{form.born.label(class="form-label")}}
-        {{form.born(class="form-control")}}
+        <div class="form-group">
+            {{ form.born.label(class_="form-label") }}
+            {{ form.born(class_="form-control") }}
+        </div>
 
-        {{form.pic.label(class="form-label")}}
-        {{form.pic(class="form-control")}}
+        <div class="form-group">
+            {{ form.pic.label(class_="form-label") }}
+            {{ form.pic(class_="form-control-file") }} <!-- Use form-control-file class for file input -->
+        </div>
 
         <br/>
-        {{form.submit(class="btn btn-primary")}}
+        {{form.submit(class_="btn btn-primary")}}
     </form>
 
 
