@@ -23,6 +23,8 @@ the most difficult things were:
   it work
 - Feeding one table into another(author drop down list when creating
   new quote)
+- Uploading images to static/images folder while saving to the db ONLY
+  the uuid+filename
 - setting up the migrations to work(due to flask-sqlalchemy deprecated
   versions and so on...)
 - creating a functional populate.py file
