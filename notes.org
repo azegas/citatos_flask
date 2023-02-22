@@ -1,6 +1,18 @@
-* database instead of .py file
-- [ ] authors
-- [ ] books
-- [ ] quotes
-
-  proper db su dbeaver ir graphs ir connections
+* stuff to do
+- [X] db model, route, and template for authors
+- [X] db model, route, and template for quotes
+- [X] add forms for adding new authors and quotes and make it work
+- [X] convert BOTH forms to "flask wtf" forms
+- [X] add images with forms
+- [ ] search field
+- [X] add secret key zygimantas way
+- [ ] add "trim whitespace" to form name/lastname
+- [ ] close to a quote - author pic
+- [X] number of quotes to each author in author page
+- [ ] login page for the admin to add quotes, for non logged in user -
+  this option is not possible
+- [ ] tag to each quote, sort by category
+- [ ] upon adding new quote - flash for success
+- [ ] make sure migrations work
+- [ ] start adding authors for real - have some real data and when you
+  need to do smth with db - simply do the migrations

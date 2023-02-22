@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="welcome">
-        <h3>Quote of the day:</h3>
-        <p class="quoteText">“{{random_post.tekstas}}”
-
-            - <i><a href="{{ url_for('route_single_author', single_author=random_post.autorius ) }}">{{random_post.autorius}}</a></i>
-
-        </i></p>
+        <blockquote class="blockquote text-center">
+            <p>{{string|safe|lower}}</p> <!--safe,capitalize,lower,upper,title,trim,striptags  -->
+            <p class="mb-0">{{ random_quote.text }}</p>
+            <footer class="blockquote-footer">{{random_quote.author.name}} {{random_quote.author.lastname}} <cite title="Source Title">Tokia ir tokia book</cite></footer>
+        </blockquote>
+        <p></p>
         <div class="d-flex tiny">
             <p><a href={{ url_for('route_all_quotes') }}>All quotes</a></p>
             <p><a href={{ url_for('route_all_authors') }}>All authors</a></p>

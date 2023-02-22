@@ -1,24 +1,12 @@
 {% extends "base.html" %}
-{% block content %}
-    <h2 class="margin50">{{single_author}}</h2>
-    <div class="row">
-        <div class="margin50 col-lg-8">
-            {% for info_piece in authors_data %}
-                {% if info_piece['autorius'] == single_author %}
-                    <p>Hobis - {{ info_piece['hobis'] }}</p>
-                    <br><br>
-                {% endif %}
-            {% endfor %}
-            <h2>Jo quotes:</h2>
-            {% for quote in quotes_data %}
-                {% if quote['autorius'] == single_author %}
-                    <p>{{ quote['data']}}</p>
-                    <p>{{ quote['tekstas']}}</p>
-                    <br><br>
-                {% endif %}
-            {% endfor %}
-        </div>
-        {% include "sidebar.html" %}
-    </div>
 
+{% block content %}
+    <h2 class="margin50">{{ author.name }} {{ author.lastname }}</h2>
+    <ul>
+        {% for quote in quotes_data %}
+            {% if quote.author_id == author.id %}
+                <li>{{ quote.text }} - {{ quote.author.name }} {{quote.author.lastname}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 {% endblock %}

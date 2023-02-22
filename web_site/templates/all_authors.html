@@ -1,13 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
+
+    <!-- display flashed message -->
+
+    {% if message %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+
     <h2 class="margin50">All authors</h2>
     <div class="row">
-        <div class="margin50 col-lg-8">
-            <!-- already a list, not a dictionary, so no need of ['autorius'] -->
-            {% for author in filter_only_authors %}
-                <p><a href="{{ url_for('route_single_author', single_author=author ) }}">{{author}}</a></p>
+        <div class="margin50 col-lg-9 card-deck">
+
+            {% for author in authors %}
+                {% set len = namespace(count=0) %}
+                {% for quote in author.quotes %}
+                    {% set len.count = len.count + 1 %}
+                {% endfor %}
+
+                <div class="card">
+                    <a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}"><img class="card-img-top" src="{{url_for('static', filename='images/' + author.pic)}}" alt="{{author.name ~ '_' ~ author.lastname}}'s image"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }} {{author.lastname}}</a></h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Number of quotes: {{ len.count }}</p>
+                        <a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}" class="btn btn-primary">{{author.name}}'s Quotes</a>
+                    </div>
+                </div>
             {% endfor %}
         </div>
-            {% include "sidebar.html" %}
-        </div>
+        {% include "sidebar.html" %}
+    </div>
 {% endblock %}

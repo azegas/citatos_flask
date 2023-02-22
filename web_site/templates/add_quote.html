@@ -1,29 +1,31 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
 
-<form action="/add_quote", method="post">
-  <div class="form-group">
-    <label for="autorius">Autorius</label>
-    <input type="text" class="form-control" id="autorius" name="autorius">
-  </div>
-  <div class="form-group">
-    <label for="pavadinimas">Pavadinimas</label>
-    <input type="text" class="form-control" id="pavadinimas" name="pavadinimas">
-  </div>
-  <div class="form-group">
-    <label for="date">Data</label>
-    <input type="text" class="form-control" id="date" name="date">
-  </div>
-  <div class="form-group">
-    <label for="tekstas">Quote</label>
-    <textarea class="form-control" id="tekstas" name="tekstas" rows="3"></textarea>
-  </div>
-    <div class="form-group">
-        <label for="balai">Balai</label>
-        <input type="number" class="form-control" id="balai" name="balai">
-    </div>
-    <button type="submit" class="btn btn-primary">Išsaugoti</button>
-</form>
+    <h2 class="margin50">Add new quote</h2>
+
+    <form method="POST"">
+        {{form.hidden_tag()}}<!-- Include CSRF token for security -->
+
+        <div class="form-group">
+            {{ form.author_id.label(class_="form-label")}} <!-- Use class_ instead of class to avoid conflict with Python keyword -->
+            {{ form.author_id(class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.text.label(class_="form-label") }}
+            {{ form.text(class_="form-control", rows="5") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.status.label }} {{ form.status }}
+        </div>
+
+        <div class="form-group">
+            {{ form.score.label }} {{ form.score }}
+        </div>
+
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
 {% endblock %}

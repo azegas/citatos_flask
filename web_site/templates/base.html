@@ -40,6 +40,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('route_add_quote')}}">Add new quote</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('route_add_author')}}">Add new author</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -55,6 +58,8 @@
         </div>
     </body>
 
+
+    <script src="{{url_for('static', filename='js/js.js')}}"></script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
