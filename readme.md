@@ -1,23 +1,29 @@
 A flask site build to store my all of the quotes that I like.
 
-Using .db file and flask-sqlalchemy to store and manipulate the data.
+# Integrated DB
 
-Single-database configuration for Flask.
+This version of the project is using .db file and flask-sqlalchemy to
+store manipulate and present the data.
 
-Isskaidytas.
+![demo](./demo.gif "demo of the branch")
 
-viskas +- tas pats, tik viskas funkcijoje ir pakvietimas is run.py yra kitoks.
+- Index page shows a random quote on each page refresh.
+- You can add a quote
+- You can add an author with picture
+- You have a list of all authors
+- You have a list of all quotes
 
-- `export FLASK_APP=run.py`
-- `$echo FLASK_APP`
-- `flask db init`
-- `flask db migrate`(check version file to be sure)
-- `flask upgrade`
-
-Can also upgrade, downgrade.
-
-## adding data to the db
-
-Amazing resource
+Learned a lot while building this version of the program.
+- Great resource
 [here](https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application).
 Go to "Populate table" section.
+
+the most difficult things were:
+- Wrapping my head around flask-wtf forms and the ingredients to make
+  it work
+- Feeding one table into another(author drop down list when creating
+  new quote)
+- setting up the migrations to work(due to flask-sqlalchemy deprecated
+  versions and so on...)
+- creating a functional populate.py file
+- with app.app_context(): - what is it, why, when..?
