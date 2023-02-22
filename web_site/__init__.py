@@ -75,7 +75,6 @@ def route_add_author():
         name = request.form["name"]
         lastname = request.form["lastname"]
         born = request.form["born"]
-        hobby = request.form["hobby"]
 
         # -----------------------------------------------------------
         # Images stuff
@@ -103,7 +102,7 @@ def route_add_author():
 
         # -----------------------------------------------------------
 
-        author = Author(name=name, lastname=lastname, born=born, hobby=hobby, pic=pic)
+        author = Author(name=name, lastname=lastname, born=born, pic=pic)
 
         flash("Successfully added an author!")
         db.session.add(author)

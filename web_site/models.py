@@ -12,7 +12,6 @@ class Author(db.Model):
     name = db.Column(db.Text, nullable=False)
     lastname = db.Column(db.Text, nullable=False)
     born = db.Column(db.Integer, nullable=True)
-    hobby = db.Column(db.String(80), nullable=True)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
     # not saving the image itself to the db, just it's name
     pic = db.Column(db.String(), nullable=True)
