@@ -16,3 +16,13 @@
 - [ ] make sure migrations work
 - [ ] start adding authors for real - have some real data and when you
   need to do smth with db - simply do the migrations
+- [ ] try authentication with [[https://www.youtube.com/watch?v=n4e3Cy2Tq3Q&ab_channel=VincentStevenson][google]]
+** DONE close to a quote - author pic                                 :note:
+CLOSED: [2023-02-23 Thu 05:48]
+:LOGBOOK:
+- Note taken on [2023-02-23 Thu 05:48] \\
+  bootstrap helped a lot!
+
+  {% if quote.author.pic %} - this is the key.
+CLOCK: [2023-02-23 Thu 05:24]--[2023-02-23 Thu 05:48] =>  0:24
+:END:
