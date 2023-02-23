@@ -3,20 +3,39 @@
     <h2 class="margin50">All quotes</h2>
     <div class="row">
         <div class="margin50 col-lg-8">
+
             {% for quote in quotes_data %}
-                <p>{{quote.id}}</p>
-                <p class="quoteText">“{{quote.text}}”</p>
-                <p class="quoteMetadata">
-                    Patalpinta:
-                    Data: {{quote.date_created}},
-                    status:
-                    {% if quote.score > 1000 %}
-                        <i>✅</i>
-                    {% else %}
-                        <i>❗</i>
-                    {% endif %}
-                </p>
-                <hr/>
+                <div class="card mb-3" >
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            {% if quote.author.pic %}
+                                <a href="{{ url_for('route_single_author', first_last_name=quote.author.name ~ '_' ~ quote.author.lastname) }}"><img class="img-fluid rounded-start" src="{{url_for('static', filename='images/' + quote.author.pic)}}" alt="{{quote.author.name ~ '_' ~ quote.author.lastname}}'s image"></a>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+
+                                <blockquote class="blockquote mb-0">
+                                    <p>“{{quote.text}}”</p>
+                                    <footer class="blockquote-footer">{{quote.author.name}} {{quote.author.lastname}}, <cite title="Source Title">From this and this book</cite></footer>
+                                </blockquote>
+
+                                <p class="card-text"><small class="text-muted">
+                                    Quote id - {{quote.id}},
+                                    Patalpinta:
+                                        Data: {{quote.date_added}},
+                                        status:
+                                        {% if quote.score > 1000 %}
+                                            <i>✅</i>
+                                        {% else %}
+                                            <i>❗</i>
+                                        {% endif %}
+                                </small></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
         </div>
         {% include "sidebar.html" %}
