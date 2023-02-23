@@ -17,7 +17,7 @@
 - [ ] start adding authors for real - have some real data and when you
   need to do smth with db - simply do the migrations
 - [ ] try authentication with [[https://www.youtube.com/watch?v=n4e3Cy2Tq3Q&ab_channel=VincentStevenson][google]]
-** DONE close to a quote - author pic                                 :note:
+** close to a quote - author pic                                 :note:
 CLOSED: [2023-02-23 Thu 05:48]
 :LOGBOOK:
 - Note taken on [2023-02-23 Thu 05:48] \\
