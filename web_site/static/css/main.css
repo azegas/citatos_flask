@@ -20,17 +20,6 @@ td {
   font-size: 14px;
 }
 
-.quoteText {
-  font-family: "Merriweather", "Georgia", serif;
-  font-size: 16px;
-  padding: 0px 5px 10px 0px;
-  line-height: 21px;
-}
-
-.quoteMetadata {
-  font-size: 12px;
-}
-
 .margin50 {
   margin-top: 50px;
   justify-content: center;
