@@ -3,6 +3,10 @@
 In this branch I will try to implement the authentication so only
 logged in users could add quotes/authors.
 
+This
+[video](https://www.youtube.com/watch?v=71EU8gnZqZQ&ab_channel=ArpanNeupane)
+helped a lot.
+
 - [x] create db table for User model
 - [x] create register/login forms
 - [x] create register/login templates
