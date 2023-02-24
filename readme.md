@@ -19,3 +19,5 @@ logged in users could add quotes/authors.
       disabled
 - [x] when logged in user tries to access login route - get's
       redirected to dashboard
+
+![demo](./demo.gif "demo of the branch")
