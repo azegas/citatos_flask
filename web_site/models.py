@@ -2,6 +2,7 @@
 
 from web_site import db
 from datetime import datetime
+from flask_login import UserMixin
 
 
 class Author(db.Model):
@@ -30,3 +31,9 @@ class Quote(db.Model):
     score = db.Column(db.Integer, nullable=False)
 
     author_id = db.Column(db.Integer, db.ForeignKey("authors.id"), nullable=False)
+
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    password = db.Column(db.String(80), nullable=False)

@@ -11,9 +11,18 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import random
 import os
-from web_site.forms import AddAuthorForm, AddQuoteForm
+from web_site.forms import AddAuthorForm, AddQuoteForm, LoginForm, RegisterForm
 from werkzeug.utils import secure_filename
 import uuid
+from flask_bcrypt import Bcrypt
+from flask_login import (
+    UserMixin,
+    login_user,
+    LoginManager,
+    login_required,
+    logout_user,
+    current_user,
+)
 
 # ---------------------------------------------------------------------------------------
 # DB STUFF
@@ -23,7 +32,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 # kad nebutu circular imports
-from web_site.models import Quote, Author
+from web_site.models import Quote, Author, User
 
 
 # initializing the db and creates the tables
@@ -40,6 +49,24 @@ def create_app():
 
 
 app = create_app()
+
+# --------------------------------------------------------------------
+# AUTHENTICATION stuff
+
+# hashing
+bcrypt = Bcrypt(app)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"
+
+
+# user loader callback
+# used to reload the user object from the user id stored in the session?
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 
 # --------------------------------------------------------------------
 # IMG Stuff
@@ -64,7 +91,8 @@ app.config["SECRET_KEY"] = SECRET_KEY
 # CREATING ROUTES
 
 
-@app.route("/add_author", methods=["GET", "POST"])
+@app.route("/dashboard/add_author", methods=["GET", "POST"])
+@login_required
 def route_add_author():
     """Use form to add add a new author to the database."""
     form = AddAuthorForm()
@@ -111,7 +139,8 @@ def route_add_author():
 # --------------------------------------------------------------------
 
 
-@app.route("/add_quote", methods=["GET", "POST"])
+@app.route("/dashboard/add_quote", methods=["GET", "POST"])
+@login_required
 def route_add_quote():
     """Use form to add add a new author to the database."""
     form = AddQuoteForm()
@@ -205,3 +234,56 @@ def page_not_found(e):
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template("errors/500.html"), 500
+
+
+# --------------------------------------------------------------------
+# CREATING AUTHENTICATION
+
+
+@app.route("/register", methods=["GET", "POST"])
+def route_register():
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        new_user = User(username=form.username.data, password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
+
+        return redirect(url_for("route_login"))
+
+    return render_template("authentication/register.html", form=form)
+
+
+@app.route("/login", methods=["GET", "POST"])
+def route_login():
+    # check if user is already logged in and if yes - redirect to dashboard instead of the login page
+    if current_user.is_authenticated:
+        return redirect(url_for("route_dashboard"))
+
+    form = LoginForm()
+    if form.validate_on_submit():
+        # check if the user is in the database or not
+        user = User.query.filter_by(username=form.username.data).first()
+        # if they are, we will check their password hash
+        if user:
+            # see if the password that we wrote matches the hashed one in our db
+            if bcrypt.check_password_hash(user.password, form.password.data):
+                # if passwords mached, then login and redirect
+                login_user(user)
+                return redirect(url_for("route_dashboard"))
+        # if the user is not in the database or the password is incorrect, then redirect them to the login page
+    return render_template("authentication/login.html", form=form)
+
+
+@app.route("/logout", methods=["GET", "POST"])
+@login_required
+def route_logout():
+    logout_user()
+    return redirect(url_for("route_login"))
+
+
+@app.route("/dashboard", methods=["GET", "POST"])
+@login_required
+def route_dashboard():
+    return render_template("authentication/dashboard.html")

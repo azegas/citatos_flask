@@ -9,8 +9,9 @@ from wtforms import (
     TextAreaField,
     SelectField,
     IntegerField,
+    PasswordField,
 )
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import DataRequired, Length, InputRequired, ValidationError
 
 
 class AddAuthorForm(FlaskForm):
@@ -46,3 +47,41 @@ class AddQuoteForm(FlaskForm):
         validators=[DataRequired()],
     )
     submit = SubmitField("submit")
+
+
+class RegisterForm(FlaskForm):
+    username = StringField(
+        validators=[InputRequired(), Length(min=4, max=20)],
+        render_kw={"placeholder": "Username"},
+    )
+    password = PasswordField(
+        validators=[
+            InputRequired(),
+            Length(min=4, max=20),
+        ],  # later it hashes, so setting it here to 20 and 80 in the model. It hashes it to put to db
+        render_kw={"placeholder": "Password"},
+    )
+    submit = SubmitField("Register")
+
+    # can not reach User model for some reason to validate if it already exists or not
+    # def validate_username(self, username):
+    #     existing_user_username = User.query.filter_by(username=username.data).first()
+    #     if existing_user_username:
+    #         raise ValidationError(
+    #             "That username already exists, choose a different one"
+    #         )
+
+
+class LoginForm(FlaskForm):
+    username = StringField(
+        validators=[InputRequired(), Length(min=4, max=20)],
+        render_kw={"placeholder": "Username"},
+    )
+    password = PasswordField(
+        validators=[
+            InputRequired(),
+            Length(min=4, max=20),
+        ],
+        render_kw={"placeholder": "Password"},
+    )
+    submit = SubmitField("Login")
