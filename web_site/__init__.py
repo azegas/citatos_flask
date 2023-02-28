@@ -132,7 +132,7 @@ def route_add_author():
 
         db.session.add(author)
         db.session.commit()
-        return redirect(url_for("route_all_authors"))
+        return redirect(url_for("route_dashboard"))
     return render_template("add_author.html", form=form)
 
 
@@ -160,7 +160,7 @@ def route_add_quote():
         )
         db.session.add(quote)
         db.session.commit()
-        return redirect(url_for("route_all_quotes"))
+        return redirect(url_for("route_dashboard"))
     return render_template("add_quote.html", form=form)
 
 
