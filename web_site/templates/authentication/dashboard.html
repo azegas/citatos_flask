@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2 class="margin50">You are inside the dashboard as a logged in user!</h2>
+
+    <div class="container overflow-hidden">
+        <div class="row gy-5">
+            <div class="col-6">
+                <a href="{{ url_for('route_add_quote')}}"><button type="button" class="btn btn-primary btn-lg col">Add new quote</button></a>
+            </div>
+            <div class="col-6">
+                <a href="{{ url_for('route_add_author')}}"><button type="button" class="btn btn-success btn-lg col">Add new author</button></a>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-secondary btn-lg col">####</button>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <p>When you are finished, <a href="{{url_for('route_logout')}}">press here to logout.</a> </p>
+
+{% endblock %}

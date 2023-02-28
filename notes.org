@@ -16,3 +16,14 @@
 - [ ] make sure migrations work
 - [ ] start adding authors for real - have some real data and when you
   need to do smth with db - simply do the migrations
+- [ ] try authentication with [[https://www.youtube.com/watch?v=n4e3Cy2Tq3Q&ab_channel=VincentStevenson][google]]
+- [X] add [[https://www.youtube.com/watch?v=71EU8gnZqZQ&ab_channel=ArpanNeupane][authentication with flask_login]]
+- [ ] maybe make register route to be accessible only with login required?
+- [ ] create error pages for when user is trying to access
+  add/dashboard pages without being logged in
+- [ ] flash messages for loggin in/logging out/registering/adding new
+  quote/author, etc
+- [X] close to a quote - author pic
+  bootstrap helped a lot!
+
+  {% if quote.author.pic %} - this is the key.
