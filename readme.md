@@ -1,5 +1,5 @@
 For a while I Wanted to create a site for all the quotes that I have
-heard/saw/thought of.
+heard/saw/read/thought of.
 
 This is it.
 
