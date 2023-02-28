@@ -23,5 +23,6 @@ helped a lot.
       disabled
 - [x] when logged in user tries to access login route - get's
       redirected to dashboard
+- [x] push to master branch????
 
 ![demo](./demo.gif "demo of the branch")
