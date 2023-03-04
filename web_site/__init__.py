@@ -250,6 +250,7 @@ def route_register():
         db.session.add(new_user)
         db.session.commit()
 
+        flash("You have successfully registered!")
         return redirect(url_for("route_login"))
 
     return render_template("authentication/register.html", form=form)
