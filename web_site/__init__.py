@@ -1,12 +1,6 @@
 """All the routes are here."""
 
-from flask import (
-    Flask,
-    render_template,
-    request,
-    redirect,
-    url_for,
-)
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import random
@@ -136,7 +130,8 @@ def route_add_author():
 
         db.session.add(author)
         db.session.commit()
-        return redirect(url_for("route_dashboard"))
+        flash("You have Successfully Added a new Author!")
+        return redirect(url_for("route_all_authors"))
     return render_template("add_author.html", form=form)
 
 
@@ -164,7 +159,8 @@ def route_add_quote():
         )
         db.session.add(quote)
         db.session.commit()
-        return redirect(url_for("route_dashboard"))
+        flash("You have Successfully Added a new Quote!")
+        return redirect(url_for("route_all_quotes"))
     return render_template("add_quote.html", form=form)
 
 
