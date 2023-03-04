@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+
+    <!-- display flashed message -->
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <br/>
+            {% for msg in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{msg}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
     <h2 class="margin50">All quotes</h2>
     <div class="row">
         <div class="margin50 col-lg-8">
