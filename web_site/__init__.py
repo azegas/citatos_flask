@@ -24,6 +24,12 @@ from flask_login import (
     current_user,
 )
 
+import json
+import urllib3
+
+with open("./config.json") as config_file:
+    config = json.load(config_file)
+
 # ---------------------------------------------------------------------------------------
 # DB STUFF
 # kai duombaze pradeda pilnai veikti, tik tuomet startinam appsa
@@ -40,7 +46,7 @@ def create_app():
     app = Flask(__name__)  # creating a Flask Instance
     basedir = os.path.abspath(os.path.dirname(__file__))
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
-        basedir, "db.db"
+        basedir, config.get("SQLALCHEMY_DATABASE_URI")
     )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)  # kuriame appse bus db inicializuota
@@ -70,7 +76,7 @@ def load_user(user_id):
 
 # --------------------------------------------------------------------
 # IMG Stuff
-app.config["UPLOAD_FOLDER"] = "static/images"
+app.config["UPLOAD_FOLDER"] = config.get("UPLOAD_FOLDER")
 
 
 # --------------------------------------------------------------------
@@ -83,9 +89,7 @@ app.config["UPLOAD_FOLDER"] = "static/images"
 # this below is Zygimantas way of generating a secret key.
 
 
-SECRET_KEY = os.urandom(32)
-app.config["SECRET_KEY"] = SECRET_KEY
-# print(SECRET_KEY)
+app.config["SECRET_KEY"] = config.get("SECRET_KEY")
 
 # --------------------------------------------------------------------
 # CREATING ROUTES
