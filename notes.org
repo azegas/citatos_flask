@@ -27,3 +27,5 @@
   bootstrap helped a lot!
 
   {% if quote.author.pic %} - this is the key.
+- [ ] github action
+  push to server upon new commit to main
