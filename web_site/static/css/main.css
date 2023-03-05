@@ -109,6 +109,46 @@ td {
   object-fit: cover;
 }
 
+/* Single author stuff */
+
+.singleAuthorTitle {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.singleAuthorWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 400px;
+  margin-bottom: 50px;
+}
+
+.singleAuthorLeft {
+  height: 100%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 15px solid #bf902e;
+  padding: 20px;
+  font-family: "Merriweather", "Georgia", serif;
+}
+
+.singleAuthorRight {
+  height: 100%;
+  width: 300px;
+  object-fit: cover;
+}
+
+.singleAuthorRight img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
 @media only screen and (max-width: 767px) {
   .quoteDetails {
     float: none;
@@ -126,6 +166,22 @@ td {
   }
   .authorAction {
     float: none;
+    width: 100%;
+  }
+  .singleAuthorWrapper {
+    flex-direction: column-reverse;
+  }
+
+  .singleAuthorRight {
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .singleAuthorWrapper {
+  }
+
+  .singleAuthorLeft {
     width: 100%;
   }
 }
