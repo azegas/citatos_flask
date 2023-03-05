@@ -42,3 +42,53 @@ td {
   border-right: 1px solid lightgray;
   /* height: 100vh; */
 }
+
+.quote {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #d7d7d7;
+  padding: 10px 0;
+}
+
+.quoteDetails {
+  float: left;
+  width: 83%;
+  margin-right: 2%;
+}
+
+.quoteAction {
+  float: right;
+  width: 15%;
+}
+
+/* .quoteAuthor { */
+/*     color: #333; */
+/*     font-weight: bold; */
+/* } */
+
+.quoteText {
+  font-family: "Merriweather", "Georgia", serif;
+  font-size: 16px;
+  padding: 0px 5px 10px 0px;
+  line-height: 21px;
+}
+
+.quoteImage img {
+  height: 71px;
+  width: 50px;
+  float: left;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 991px) {
+  .quoteDetails {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+  }
+  .quoteAction {
+    float: none;
+    width: 100%;
+  }
+}
