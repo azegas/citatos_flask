@@ -42,3 +42,146 @@ td {
   border-right: 1px solid lightgray;
   /* height: 100vh; */
 }
+
+.quote {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #d7d7d7;
+  padding: 10px 0;
+}
+
+.quoteDetails {
+  float: left;
+  width: 83%;
+  margin-right: 2%;
+}
+
+.quoteAction {
+  float: right;
+  width: 15%;
+}
+
+.quoteText {
+  font-family: "Merriweather", "Georgia", serif;
+  font-size: 16px;
+  padding: 0px 5px 10px 0px;
+  line-height: 21px;
+}
+
+.quoteImage img {
+  height: 71px;
+  width: 50px;
+  float: left;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.author {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #d7d7d7;
+  padding: 10px 0;
+}
+
+.authorDetails {
+  float: left;
+  width: 83%;
+  margin-right: 2%;
+}
+
+.authorAction {
+  float: right;
+  width: 15%;
+}
+
+.authorText {
+  font-family: "Merriweather", "Georgia", serif;
+  font-size: 16px;
+  padding: 0px 5px 10px 0px;
+  line-height: 21px;
+}
+
+.authorImage img {
+  height: 71px;
+  width: 50px;
+  float: left;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+/* Single author stuff */
+
+.singleAuthorTitle {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.singleAuthorWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 400px;
+  margin-bottom: 50px;
+}
+
+.singleAuthorLeft {
+  height: 100%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 15px solid #bf902e;
+  padding: 20px;
+  font-family: "Merriweather", "Georgia", serif;
+}
+
+.singleAuthorRight {
+  height: 100%;
+  width: 300px;
+  object-fit: cover;
+}
+
+.singleAuthorRight img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 767px) {
+  .quoteDetails {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+  }
+  .quoteAction {
+    float: none;
+    width: 100%;
+  }
+  .authorDetails {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+  }
+  .authorAction {
+    float: none;
+    width: 100%;
+  }
+  .singleAuthorWrapper {
+    flex-direction: column-reverse;
+  }
+
+  .singleAuthorRight {
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .singleAuthorWrapper {
+  }
+
+  .singleAuthorLeft {
+    width: 100%;
+  }
+}

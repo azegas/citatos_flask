@@ -1,12 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2 class="margin50">{{ author.name }} {{ author.lastname }}</h2>
+
+    <h2 class="margin50 singleAuthorTitle">{{ author.name }} {{ author.lastname }}</h2>
+
+    <!-- chosen quote + image -->
+    <div class="singleAuthorWrapper">
+        <div class="singleAuthorLeft">
+        {% for quote in quotes_data %}
+            {% if quote.author_id == author.id and quote.score == 1 %} <!-- I choose a specific quote by quote id -->
+                <div>
+                    <p>“{{quote.text}}”</p>
+                    <cite>
+                        <small class="blockquote-footer quoteAuthor">{{quote.author.name}} {{quote.author.lastname}}</small>
+                    </cite>
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+
+        <div class="singleAuthorRight">
+            <a href="{{url_for('static', filename='images/' + author.pic)}}">
+                <img src="{{url_for('static', filename='images/' + author.pic)}}" alt="{{author.name ~ '_' ~ author.lastname}}'s image" width="300px">
+            </a>
+        </div>
+
+    </div>
+
+    <h3>All quotes:</h3>
+
     <ul>
         {% for quote in quotes_data %}
             {% if quote.author_id == author.id %}
-                <li>{{ quote.text }} - {{ quote.author.name }} {{quote.author.lastname}}</li>
+                <li>{{ quote.text }}</li>
             {% endif %}
         {% endfor %}
     </ul>
+
 {% endblock %}

@@ -19,7 +19,7 @@
 
     <h2 class="margin50">All authors</h2>
     <div class="row">
-        <div class="margin50 col-lg-9 card-deck">
+        <div class="margin50 col-lg-8">
 
             {% for author in authors %}
                 {% set len = namespace(count=0) %}
@@ -27,15 +27,36 @@
                     {% set len.count = len.count + 1 %}
                 {% endfor %}
 
-                <div class="card">
-                    <a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}"><img class="card-img-top" src="{{url_for('static', filename='images/' + author.pic)}}" alt="{{author.name ~ '_' ~ author.lastname}}'s image"></a>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }} {{author.lastname}}'s quotes</a></h5>
-                        <p class="card-text">Number of quotes: {{ len.count }}</p>
-                        <p class="card-text small">Born: {{ author.born }}</p>
+                <div class="author">
+
+                    <div class="authorDetails">
+
+                        <div class="authorImage">
+                            <a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}"><img class="card-img-top" src="{{url_for('static', filename='images/' + author.pic)}}" alt="{{author.name ~ '_' ~ author.lastname}}'s image"></a>
+
+                        </div>
+
+                        <div class="authorText">
+                            <a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }} {{author.lastname}}</a>
+                        </div>
+
+                        <div class="authorFooter">
+                            <small class="text-muted">
+                                Born: {{ author.born }}
+                            </small>
+                        </div>
+
                     </div>
+
+                    <div class="authorAction">
+                        <small class="text-muted">
+                            Quotes: <b>{{ len.count }}</b>
+                        </small>
+                    </div>
+
                 </div>
             {% endfor %}
+
         </div>
         {% include "sidebar.html" %}
     </div>

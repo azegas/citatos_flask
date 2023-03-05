@@ -250,6 +250,7 @@ def route_register():
         db.session.add(new_user)
         db.session.commit()
 
+        flash("You have successfully registered!")
         return redirect(url_for("route_login"))
 
     return render_template("authentication/register.html", form=form)
@@ -259,6 +260,7 @@ def route_register():
 def route_login():
     # check if user is already logged in and if yes - redirect to dashboard instead of the login page
     if current_user.is_authenticated:
+        flash("You are already logged in, redirecting to dashboard!")
         return redirect(url_for("route_dashboard"))
 
     form = LoginForm()
@@ -271,6 +273,7 @@ def route_login():
             if bcrypt.check_password_hash(user.password, form.password.data):
                 # if passwords mached, then login and redirect
                 login_user(user)
+                flash("Login Successful!")
                 return redirect(url_for("route_dashboard"))
         # if the user is not in the database or the password is incorrect, then redirect them to the login page
     return render_template("authentication/login.html", form=form)
@@ -280,6 +283,7 @@ def route_login():
 @login_required
 def route_logout():
     logout_user()
+    flash("You have been logged out!")
     return redirect(url_for("route_login"))
 
 
