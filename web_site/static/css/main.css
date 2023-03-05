@@ -81,7 +81,7 @@ td {
   object-fit: cover;
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 767px) {
   .quoteDetails {
     float: none;
     width: 100%;
