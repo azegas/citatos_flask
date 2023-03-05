@@ -21,7 +21,7 @@
     <div class="row">
         <div class="margin50 col-lg-8">
 
-            {% for author in authors %}
+            {% for author in authors|reverse %}
                 {% set len = namespace(count=0) %}
                 {% for quote in author.quotes %}
                     {% set len.count = len.count + 1 %}

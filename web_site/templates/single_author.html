@@ -30,7 +30,7 @@
     <h3>All quotes:</h3>
 
     <ul>
-        {% for quote in quotes_data %}
+        {% for quote in quotes_data|reverse %}
             {% if quote.author_id == author.id %}
                 <li>{{ quote.text }}</li>
             {% endif %}
