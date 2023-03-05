@@ -28,6 +28,7 @@
                 {% endfor %}
 
                 <div class="author">
+
                     <div class="authorDetails">
 
                         <div class="authorImage">
@@ -36,22 +37,23 @@
                         </div>
 
                         <div class="authorText">
-                            <a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }} {{author.lastname}}'s Quotes</a>
+                            <a href="{{ url_for('route_single_author', first_last_name=author.name ~ '_' ~ author.lastname) }}">{{ author.name }} {{author.lastname}}</a>
                         </div>
 
                         <div class="authorFooter">
                             <small class="text-muted">
                                 Born: {{ author.born }}
-
                             </small>
                         </div>
 
                     </div>
+
                     <div class="authorAction">
                         <small class="text-muted">
                             Quotes: <b>{{ len.count }}</b>
                         </small>
                     </div>
+
                 </div>
             {% endfor %}
 
