@@ -61,11 +61,6 @@ td {
   width: 15%;
 }
 
-/* .quoteAuthor { */
-/*     color: #333; */
-/*     font-weight: bold; */
-/* } */
-
 .quoteText {
   font-family: "Merriweather", "Georgia", serif;
   font-size: 16px;
@@ -81,6 +76,39 @@ td {
   object-fit: cover;
 }
 
+.author {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #d7d7d7;
+  padding: 10px 0;
+}
+
+.authorDetails {
+  float: left;
+  width: 83%;
+  margin-right: 2%;
+}
+
+.authorAction {
+  float: right;
+  width: 15%;
+}
+
+.authorText {
+  font-family: "Merriweather", "Georgia", serif;
+  font-size: 16px;
+  padding: 0px 5px 10px 0px;
+  line-height: 21px;
+}
+
+.authorImage img {
+  height: 71px;
+  width: 50px;
+  float: left;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
 @media only screen and (max-width: 767px) {
   .quoteDetails {
     float: none;
@@ -88,6 +116,15 @@ td {
     margin-right: 0;
   }
   .quoteAction {
+    float: none;
+    width: 100%;
+  }
+  .authorDetails {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+  }
+  .authorAction {
     float: none;
     width: 100%;
   }
