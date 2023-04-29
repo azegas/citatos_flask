@@ -1,0 +1,7 @@
+// this is config.json file example
+
+{
+  "SECRET_KEY": "randomlyGeneratedSecretKey",
+  "SQLALCHEMY_DATABASE_URI": "nameOfTheDB.db",
+  "UPLOAD_FOLDER": "static/images"
+}
